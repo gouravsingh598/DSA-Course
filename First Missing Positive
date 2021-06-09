@@ -1,0 +1,48 @@
+Problem Link:-https://leetcode.com/problems/first-missing-positive/
+Solution:-
+Nlog(n) 
+int firstMissingPositive(vector<int>& nums) {
+        int x=1;
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]==x)
+                x++;
+        }
+        return x;
+    }
+ O(N) with 0(N) extra space 
+ int firstMissingPositive(vector<int>& arr) {
+        int n=arr.size();
+        
+      bool arr1[n+1];
+        for(int i=0;i<=n;i++)
+            arr1[i]=false;
+      
+      for(int i=0;i<n;i++)
+      {
+          if(arr[i]>=0 && arr[i]<=n)
+          arr1[arr[i]]=true;
+          
+      }
+        int i;
+      for(i=1;i<=n;i++)
+      {
+          if(arr1[i]==false)
+          return i;
+      }
+      return n+1;
+    }
+  Efficient Solution :-  
+  int firstMissingPositive(vector<int>& A) {
+       int n=A.size();
+         for(int i = 0; i < n; ++ i)
+            while(A[i] > 0 && A[i] <= n && A[A[i] - 1] != A[i])
+                swap(A[i], A[A[i] - 1]);
+        
+        for(int i = 0; i < n; ++ i)
+            if(A[i] != i + 1)
+                return i + 1;
+        
+        return n + 1;
+    }
