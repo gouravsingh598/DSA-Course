@@ -1,0 +1,28 @@
+problem Link:-https://practice.geeksforgeeks.org/problems/minimum-distance-between-two-numbers/1
+solution :-
+int minDist(int arr[], int n, int x, int y) {
+        int ans=-1;
+        int curr_x=-1;
+        int curr_y=-1;
+        for(int i=0;i<n;i++)
+        {   
+            if(arr[i]==x)
+            curr_x=i;
+            if(arr[i]==y)
+            curr_y=i;
+            
+            if(curr_x!=-1 && curr_y!=-1)
+            {
+                if(ans!=-1)
+                {
+                    if(abs(curr_x-curr_y)<ans)
+                    ans=abs(curr_x-curr_y);
+                    
+                }
+                else
+                ans=abs(curr_x-curr_y);
+            }
+            
+        }
+        return ans;
+    }
