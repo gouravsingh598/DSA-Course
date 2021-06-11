@@ -1,0 +1,33 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/common-elements1132/1
+vector <int> commonElements (int arr[], int arr1[], int arr2[], int n1, int n2, int n3)
+        {
+             int a=0,b=0,c=0;
+             int x=arr[a];
+             int y=arr1[b];
+             int z=arr2[c];
+             set<int> v;
+             while(a < n1 && b < n2 && c < n3)
+             {
+                 if(arr[a]==arr1[b] && arr1[b]==arr2[c])
+                 {
+                 v.insert(arr[a]);
+                 a++;
+                 b++;
+                 c++;
+                 }
+                 
+                 else if(arr[a]<arr1[b])
+                 a++;
+                 else if(arr1[b]<arr2[c])
+                 b++;
+                 else
+                 c++;
+             }
+             vector<int> v1;
+             for(auto i:v)
+             {
+                 v1.push_back(i);
+             }
+             return v1;
+        }
+        
