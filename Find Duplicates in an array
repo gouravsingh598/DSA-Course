@@ -1,0 +1,36 @@
+Problem :-https://practice.geeksforgeeks.org/problems/find-duplicates-in-an-array/1
+
+solution :-
+vector<int> duplicates(int a[], int n) {
+    sort(a,a+n);
+    int count=0;
+    int prev=-1;
+    vector<int> v;
+    for(int i=0;i<n;)
+    {  
+    
+        if(a[i]==a[i+1])
+        {
+            if(a[i]!=prev)
+           {
+               prev=a[i];
+               v.push_back(a[i]);
+           } 
+            i+=2;
+            
+            
+        }
+        else 
+        i++;
+        
+    }
+    vector<int> v1;
+    if(v.size()>=1)
+    return v;
+    else 
+    {
+        v1.push_back(-1);
+        return v1;
+    }
+ 
+}
