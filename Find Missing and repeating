@@ -1,0 +1,50 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
+Solution:- 
+int ans=1;
+        int sum=0;
+        int final;
+        int x;
+        int p=0;
+        int m=0;
+        vector<int> v;
+      sort(arr,arr+n);
+      set<int> s;
+      for(int i=0;i<n;i++)
+      {
+          if(arr[i]==arr[i+1])
+          {
+          p=arr[i];
+          break;
+          }
+          
+      }
+      for(int i=0;i<n;i++)
+      {
+          s.insert(arr[i]);
+      }
+      
+      for(auto i:s)
+      {
+      
+          if(i!=ans)
+          {    m++;
+              x=ans;
+              break;
+             
+          }
+          ans+=1;
+      }
+        
+      v.push_back(p);
+      if(m>0)
+      v.push_back(x);
+      else
+      {
+          v.push_back(s.size()+1);
+      }
+      return v;
+      
+    }
+    Efficient Solution :- 
+    
+    
