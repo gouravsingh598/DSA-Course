@@ -1,0 +1,29 @@
+Problem Link:-https://leetcode.com/problems/number-of-good-pairs/
+Solution :-
+int numIdenticalPairs(vector<int>& nums) {
+        int ans=0;
+        unordered_map<int,int> mp;
+        int arr[1001];
+    
+        for(auto i:nums)
+        {
+           mp[i]++;
+            
+        }
+        for(auto i:mp)
+        {  int x=i.second;
+           ans+=(x*(x-1)/2);
+        }
+        return ans;
+    }
+    Solution 2:-
+     int numIdenticalPairs(vector<int>& nums) {
+      int ans=0;
+        unordered_map<int,int> mp;
+        for(auto i:nums)
+        {
+            ans+=mp[i];
+            mp[i]++;
+        }
+        return ans;
+    }
