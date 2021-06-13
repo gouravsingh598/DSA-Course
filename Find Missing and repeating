@@ -45,6 +45,49 @@ int ans=1;
       return v;
       
     }
-    Efficient Solution :- 
+    Efficient Solution :- int *findTwoElement(int *arr, int n) {
+        int arr1[2]={0};
+        for(int i=0;i<2;i++)
+        arr1[i]=0;
+        
+        for(int i=0;i<n;i++)
+        {   
+            int x=abs(arr[i]);
+            arr[x-1]=-1*arr[x-1];
+        }
+        
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]>0)
+            {
+                if(arr1[0]==0)
+                {
+                arr1[0]=i+1;
+                
+                }
+                else
+                {
+                arr1[1]=i+1;
+               
+                }
+            }
+        
+        }
+      
+        int temp;
+    
+        for(int i=0;i<n;i++)
+        {
+            if(abs(arr[i])==arr1[1])
+            {   
+                swap(arr1[0],arr1[1]);
+            }
+            
+        }
+        
+        arr[0]=arr1[0];
+        arr[1]=arr1[1];
+        return arr;
+    }
     
     
