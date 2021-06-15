@@ -1,0 +1,47 @@
+Problem Link:- https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays5135/1
+Solution :-
+using namespace std;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    long long int t;
+    cin>>t;
+    while(t--)
+    {
+       long long int x,y;
+        cin>>x>>y;
+         int arr1[x],arr2[y];
+        for(long long int i=0;i<x;i++)
+        {
+           cin>>arr1[i];
+        }
+        
+        for(long long int i=0;i<y;i++)
+        {
+            cin>>arr2[i];
+        }
+      
+        long long int i=0,j=0;
+         while(i<x && j<y)
+         {   
+            if(arr1[i]>arr2[j])
+            {
+              cout<<arr2[j]<<" ";
+              j++;
+            }
+            else
+            {
+              cout<<arr1[i]<<" ";
+               i++;
+            }
+         }
+      for(int k=i;k<x;k++)
+      cout<<arr1[k]<<" ";
+      for(int v=j;v<y;v++)
+      cout<<arr2[v]<<" ";
+         
+         cout<<endl;
+    }
+}
