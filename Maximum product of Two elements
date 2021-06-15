@@ -1,0 +1,25 @@
+Problem Link:-https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
+Solution:-
+ int maxProduct(vector<int>& nums) {
+        int ans=0;
+        int ind=-1;
+       for(int i=0;i<nums.size();i++)
+       {
+           if(nums[i]>ans)
+           {
+             ans=nums[i];
+               ind=i;
+           }
+           
+       }
+        int ans1=0;
+         for(int i=0;i<nums.size();i++)
+       {
+           if(nums[i]>ans1 && i!=ind)
+           {
+             ans1=nums[i];
+           }
+           
+       }
+      return (ans-1)*(ans1-1);
+    }
