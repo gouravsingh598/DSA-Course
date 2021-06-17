@@ -1,0 +1,38 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/max-sum-path-in-two-arrays/1
+Solution:-
+  int max_path_sum(int arr[], int arr1[], long long int l1, long long int l2)
+    {    
+      int result = 0, sum1 = 0, sum2 = 0;
+    int i =0, j=0;
+    
+    while(i<l1 && j<l2){
+        
+        if(arr[i] < arr1[j]){    
+            sum1 += arr[i];
+            i++;
+        }
+        else if(arr[i] > arr1[j])
+            sum2 += arr1[j++];
+        else{
+            result += max(sum1, sum2);
+            
+            sum1 = sum2 = 0;
+            
+            while(i<l1 && j<l2 && arr[i]==arr1[j]){
+                result += arr[i];
+                i++;
+                j++;
+            }
+        }
+    }
+    while (i < l1)
+        sum1  +=  arr[i++];
+
+    while (j < l2)
+        sum2 +=  arr1[j++];
+
+    result +=  max(sum1, sum2);
+
+    return result;
+    }
+    
