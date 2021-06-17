@@ -1,0 +1,52 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/maximum-sub-array5443/1
+solution:-vector<int> findSubarray(int arr[], int n) {
+	    long long  int max_prev=0, max_cur = 0;
+         long long int start = -1, end = 0, s=0;
+        long long  int count=0;
+         long long int prev_count=0;
+        long long int diff=0;
+    vector<int> v;
+    for(int i=0;i<n;i++)
+    {
+      if(arr[i]<0)
+      {
+      max_cur=0;
+      s=i+1;
+      }
+      else
+      {
+       max_cur+=arr[i];
+       count++;
+      }
+       
+     if(max_prev<max_cur)
+       {
+           start=s;
+           end=i;
+           max_prev=max_cur;
+           prev_count=count;
+           diff=end-start;
+       }
+      if(max_prev==max_cur && i-start>diff)
+      {
+           start=s;
+           end=i;
+           max_prev=max_cur;
+           prev_count=count;
+           diff=end-start;
+      }
+    }
+   
+    for(int i=start;i<=end;i++)
+   {
+       v.push_back(arr[i]);
+    }
+    if(v.size()>=1 && start!=-1)
+    return v;
+    else
+	{
+	    vector<int> v1;
+	    v1.push_back(-1);
+	    return v1;
+	}
+	}
