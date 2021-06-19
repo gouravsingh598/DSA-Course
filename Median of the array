@@ -1,0 +1,15 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/find-the-median0527/1
+Solution :-	int find_median(vector<int> v)
+		{
+		   sort(v.begin(),v.end());
+		   int p=v.size()/2;
+		   
+		   if(v.size()%2==0)
+		   {
+		       int ans=v[p-1];
+		       ans+=v[p];
+		       ans=ans/2;
+		       return ans;
+		   }
+		   return v[p];
+		}
