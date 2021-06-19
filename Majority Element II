@@ -1,0 +1,82 @@
+Problem Link:-https://leetcode.com/problems/majority-element-ii/
+Solution :-
+  vector<int> majorityElement(vector<int>& nums) {
+        vector<int> v;
+        int x=1000000000+1;
+        
+        int n=nums.size();
+             if(n==1)
+            return nums;
+        
+        sort(nums.begin(),nums.end());
+        int count=1;
+        
+       // for(int i=0;i<n;i++)
+          //  cout<<nums[i]<<" ";
+        //cout<<endl;
+        for(int i=0;i<nums.size()-1;i++)
+        {
+           
+            if(nums[i]==nums[i+1])
+                count++;
+            
+            else 
+            {  
+                    if(count>(n/3))
+                    v.push_back(nums[i]);
+                       
+                count=1;
+            }
+        }
+        if(count>(n/3))
+            v.push_back(nums[n-1]);
+        
+        return v;
+    }
+    
+    Efficient Solution :- int n=nums.size();
+    int ans1=-1;
+    int ans2=-1;
+    int count1=0;
+    int count2=0;
+        for(int i:nums)
+        {
+            if(i==ans1)
+            count1++;
+            
+            else if(i==ans2)
+                count2++;
+            
+             else if(count1==0)
+            {      ans1=i;
+                  count1=1;
+            }
+            else if(count2==0)
+            {   
+                ans2=i;
+                count2=1;
+                
+            }
+           else
+           {
+               count1--;
+               count2--;
+           }
+        }
+        int val=0;
+        int val1=0;
+         for(int i=0;i<n;i++)
+         {
+             if(nums[i]==ans1)
+                 val++;
+             else if(nums[i]==ans2)
+                 val1++;
+             
+         }
+        vector<int> v;
+        if(val>(n/3))
+           v.push_back(ans1);
+        if(val1>(n/3))
+            v.push_back(ans2);
+        return v;
+    }
