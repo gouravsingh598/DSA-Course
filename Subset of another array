@@ -1,0 +1,16 @@
+Problem Link-https://practice.geeksforgeeks.org/problems/array-subset-of-another-array2317/1
+Solution:-  
+unordered_map<int,int> mp;
+    for(int i=0;i<n;i++)
+    mp[arr1[i]]++;
+    for(int i=0;i<m;i++)
+    {
+        if(mp.find(arr2[i])!=mp.end())
+        {
+            mp[arr2[i]]--;
+            continue;
+        }
+        else
+        return "No";
+    }
+    return "Yes";
