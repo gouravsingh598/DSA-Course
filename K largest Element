@@ -1,0 +1,45 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/k-largest-elements3736/1
+Solution :-
+vector<int> kLargest(int arr[], int n, int k)
+    {  int ans=0;
+    
+       for(int i=0;i<n;i++)
+       {
+          if(arr[i]>ans)
+           ans=arr[i];
+          
+       }
+       int arr1[ans+2];
+       
+       for(int i=0;i<=ans;i++)
+       arr1[i]=0;
+       
+       for(int i=0;i<n;i++)
+       {
+           arr1[arr[i]]++;
+       }
+       int count=0;
+       
+       vector<int> v;
+       //cout<<ans<<endl;
+       for(int i=ans;i>=0;i--)
+       {   
+           if(count==k)
+           {
+           break;
+           }
+           
+            if(arr1[i]>0 && count<k)
+           {  
+               while(arr1[i]>0 && count<k)
+               {
+               v.push_back(i);
+               arr1[i]--;
+               count++;
+               }
+               
+           }
+           
+       }
+       return v;
+    }
