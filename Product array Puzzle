@@ -1,0 +1,44 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/product-array-puzzle4525/1
+Solution :- vector<long long int> productExceptSelf(vector<long long int>& arr, int n) {
+         long long int ans=1;
+         vector<long long int > v;
+          for(int i=0;i<n;i++)
+          {   
+              if(arr[i]!=0)
+              ans=ans*arr[i];
+          }
+         // cout<<ans<<endl;
+          int count0=0;
+          for(int i=0;i<n;i++)
+          {
+              if(arr[i]==0)
+              count0++;
+          }
+          //cout<<ans<<" "<<count0<<endl;
+          for(int i=0;i<n;i++)
+          {     
+              if(count0>0)
+             {  
+                 if(arr[i]==0)
+                 {
+                     count0--;
+                     if(count0>0)
+                     {
+                     v.push_back(0);
+                    
+                     }
+                     else 
+                     v.push_back(ans);
+                     count0++;
+                 }
+                 else
+                 v.push_back(0);
+                 
+             } 
+             
+             else 
+             v.push_back(ans/arr[i]);
+          }
+          return v;
+          
+    }
