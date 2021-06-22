@@ -1,0 +1,22 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/three-way-partitioning/1
+Solution :- void threeWayPartition(vector<int>& arr,int a, int b)
+    {       int n=arr.size();
+            int l=0;
+            int r=n-1;
+            for(int i=0;i<=r;i++)
+            {
+                if(arr[i]<a)
+                {
+                    swap(arr[l],arr[i]);
+                    l++;
+                }
+                else if(arr[i]>b)
+                {
+                    swap(arr[r],arr[i]);
+                    r--;
+                    i--;
+                }
+            }
+            //for(int i=0;i<n;i++)
+            //cout<<arr[i]<<" ";
+    }
