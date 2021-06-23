@@ -1,0 +1,65 @@
+Problem Link:-https://leetcode.com/problems/4sum/
+Solution :-
+  vector<vector<int>> fourSum(vector<int>& arr, int target) {
+         vector<vector<int>> v;
+         
+        int n=arr.size();
+        int i,j;
+        if(n<4)
+        {
+            return v;
+        }
+      sort(arr.begin(),arr.end());
+        
+           for(i=0;i<n;i++)
+           {
+              for(j=i+1;j<n;j++)
+             {
+                int low=j+1;
+                int high=n-1;
+                int sum=arr[i]+arr[j];
+                int val=target-sum;
+                vector<int> v1;
+                while(low<high)
+                {
+                  int sum1=arr[low]+arr[high]; 
+                    if(sum1>val)
+                    {
+                        high--;
+                    }
+                    else if(sum1<val)
+                     low++;
+                    
+                    else
+                    {
+                        v1.push_back(arr[i]);
+                        v1.push_back(arr[j]);
+                        v1.push_back(arr[low]);
+                        v1.push_back(arr[high]);
+                        v.push_back(v1);   
+                        v1.clear();
+                        
+                        
+                        while(low <high && arr[low]==arr[low+1])
+                            low++;
+                        
+                        while(low<high && arr[high-1]==arr[high])
+                            high--;
+                        
+                          low++;
+                          high--;
+                    }
+                    
+                }
+                 while(j+1 < n && arr[j+1]==arr[j])
+                     ++j;
+                
+                  
+            }
+               
+          while(i+1 < n  && arr[i+1]==arr[i])
+                     i++;
+               
+        }
+    return v;
+    }
