@@ -1,0 +1,35 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/count-distinct-elements-in-every-window/1
+Solution:- vector <int> countDistinct (int arr[], int n, int k)
+      {   vector<int> v;
+        unordered_map<int,int> mp;
+        int count=0;
+        int ans=0;
+        int x=0;
+        for(int i=0;i<k;i++)
+        {
+          if(mp[arr[i]]==0)
+          count++;
+          
+          mp[arr[i]]++;
+        }
+        ans=max(count,ans);
+        v.push_back(count);
+        for(int i=k;i<n;i++)
+        {   
+           if(mp[arr[x]]==1)
+           {
+               count--;
+           }
+           
+           mp[arr[x]]--;
+           
+           if(mp[arr[i]]==0)
+           {
+               count++;
+           }
+           mp[arr[i]]++;
+           v.push_back(count);
+           x++;
+        }
+        return v;
+    }
