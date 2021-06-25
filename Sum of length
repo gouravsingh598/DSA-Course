@@ -1,0 +1,57 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/sum-of-length3345/1
+Solution:-int sumoflength(int arr[], int n)
+    {
+        
+        unordered_set<int> s;
+     
+        int j = 0, ans = 0;
+        for (int i=0; i<n; i++)
+        { 
+            while (j < n && s.find(arr[j]) == s.end())
+            {
+                s.insert(arr[j]);
+                j++;
+            }
+            ans += s.size()*(s.size()+1)/2;
+           // for(auto i:s)
+           // {
+            //    cout<<i<<" ";
+           // }
+           // cout<<endl;
+            s.erase(arr[i]);
+            
+            //cout<<"ans is";
+            //cout<<ans<<endl;
+            
+        }
+        return ans;
+    
+    }
+    Efficient Solution:- int sumoflength(int arr[], int n)
+    {
+        
+        unordered_set<int> s;
+     
+        int j = 0, ans = 0;
+        for (int i=0; i<n; i++)
+        { 
+            while (j < n && s.find(arr[j]) == s.end())
+            {
+                s.insert(arr[j]);
+                j++;
+            }
+            ans += s.size()*(s.size()+1)/2;
+           // for(auto i:s)
+           // {
+            //    cout<<i<<" ";
+           // }
+           // cout<<endl;
+            s.erase(arr[i]);
+            
+            //cout<<"ans is";
+            //cout<<ans<<endl;
+            
+        }
+        return ans;
+    
+    }
