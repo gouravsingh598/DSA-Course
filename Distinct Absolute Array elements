@@ -1,0 +1,36 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/distinct-absolute-array-elements4529/1
+Solution:-int distinctCount(int arr[], int n) {
+      int i=0;
+      int j=n-1;
+      int count=n;
+      int sum=0;
+      while(i<j)
+      {
+          while(i!=j && arr[i]==arr[i+1])
+          {count--;
+          i++;
+          }
+          
+          while(i!=j && arr[j]==arr[j-1])
+          { count--;
+            j--;
+          }
+         
+          if(i==j)
+          break;
+          
+          sum=arr[i]+arr[j];
+          
+          if(sum==0)
+          {
+              count--;
+              i++;
+              j--;
+          }
+          else if(sum>0)
+          j--;
+          else
+          i++;
+      }
+      return count;
+    }
