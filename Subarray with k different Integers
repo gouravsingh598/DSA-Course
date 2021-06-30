@@ -1,0 +1,38 @@
+Problem Link:-https://leetcode.com/problems/subarrays-with-k-different-integers/
+Solution:- int subarraysWithKDistinct(vector<int>& nums, int k) {
+      int n=nums.size();
+        
+     vector<int> v (n+1,0);
+        int i=0,j=0;
+        int res=0;
+        int prefix=0;
+        int count=0;
+        for(int j=0;j<n;)
+        {
+            if(v[nums[j]]==0)
+            {
+                count++;
+                j++;
+            }
+            
+            if(count>k)
+            {
+                v[nums[i]]--;
+                 count--;
+                 i++;
+                 prefix=0;   
+            }
+            
+             while(v[nums[j]]>1)
+                {
+                    prefix++;
+                    v[nums[j]]--;
+                    j++;
+                    
+                }
+         
+                if(count==k)
+                res+= prefix+1;
+        }
+     return res;
+    }
