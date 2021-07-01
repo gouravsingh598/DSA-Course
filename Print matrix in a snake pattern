@@ -1,0 +1,25 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/print-matrix-in-snake-pattern-1587115621/1
+Solution:- vector<int> snakePattern(vector<vector<int> > matrix)
+    {   vector<int> v;
+       int x=0;
+       for(int i=0;i<matrix.size();i++)
+       {
+           if(x==0)
+           {
+               for(int j=0;j<matrix[0].size();j++)
+               {
+                   v.push_back(matrix[i][j]);
+               }
+               x++;
+           }
+            else if(x==1)
+           {
+               for(int j=matrix[0].size()-1;j>=0;j--)
+               {
+                   v.push_back(matrix[i][j]);
+               }
+               x--;
+           }
+       }
+       return v;
+    }
