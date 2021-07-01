@@ -1,0 +1,19 @@
+Problem Link:-https://leetcode.com/problems/shift-2d-grid/
+Solution:-vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
+          int n=grid.size();
+          int m=grid[0].size();
+          vector<vector<int>> v (n,vector<int>(m,0));
+         for(int i=0;i<n;i++)
+         {
+             for(int j=0;j<m;j++)
+             {
+                 int j1=(j+k)%m;
+                 int i1=(j+k)/m;
+                  i1=(i1+i)%n;
+                 v[i1][j1]=grid[i][j];
+                 
+             }
+         }
+        
+        return v;
+   }
