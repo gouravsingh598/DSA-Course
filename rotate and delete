@@ -1,0 +1,27 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/rotate-and-delete-1587115621/1
+Solution :-int rotateDelete(vector<long long> v, int n){
+   
+        
+int ind;
+        
+        if(n==1) 
+        return v[0];
+else if(n%2) {
+    ind = n-3;
+    ind = floor(ind/4);
+    cout<<ind;
+    ind = 3+ind;
+    cout<<ind<<endl;
+    //cout<<v[ind-1]<<endl;
+} else {
+     ind = n-2;
+    ind = floor(ind/4);
+    ind = 2+ind;
+    //cout<<arr[ind-1]<<endl;
+}
+   return v[ind-1]; 
+        
+    
+        
+        
+    }
