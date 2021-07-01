@@ -1,0 +1,9 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/squares-in-a-matrix5716/1
+Solution:- long long squaresInMatrix(int m, int n) {
+        long long int val=max(m,n);
+        long long int val1=min(m,n);
+        long long int ans=0;
+   ans=  (val1 * (val1 + 1)) * (3 * val - val1 + 1) / 6;
+     
+     return ans;
+    }
