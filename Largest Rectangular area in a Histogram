@@ -1,0 +1,64 @@
+Problem Link:-https://leetcode.com/problems/largest-rectangle-in-histogram/
+solution :-int n=heights.size();
+           stack<int> s;
+           
+         int left[n];
+         int right[n];
+         
+        
+        for(int i=0;i<n;i++)
+        {
+            
+              while(!s.empty() && heights[s.top()]>=heights[i])
+                {  
+                   s.pop();
+                 
+                }
+                
+            if(s.empty())
+            {
+            left[i]=0;
+            }
+    
+            else if(heights[s.top()]<heights[i])
+            {
+                left[i]=s.top() + 1;
+            }
+             s.push(i);
+        }
+        while(!s.empty())
+        s.pop();
+        
+       // s.push(-1);
+        for(int i=n-1;i>=0;i--)
+        {
+            
+              while(!s.empty() && heights[s.top()]>=heights[i])
+                {  
+                   s.pop();
+                 
+                }
+                
+            if(s.empty())
+            {
+            right[i]=n-1;
+            }
+           
+            else if(heights[s.top()]<heights[i])
+            {
+                right[i]=s.top() - 1;
+            }
+            
+             s.push(i);
+        }
+         int ans=0;
+       for(int i=0;i<n;i++)
+       { 
+            int val= (right[i]-left[i] + 1)*heights[i];
+           ans=max(ans,val);
+       }
+       return ans;
+ 
+        
+    }
+};
