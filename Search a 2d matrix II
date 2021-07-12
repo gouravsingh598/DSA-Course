@@ -1,0 +1,17 @@
+Problem Link:-https://leetcode.com/problems/search-a-2d-matrix-ii/
+Solution:- bool searchMatrix(vector<vector<int>>& mat, int target) {
+        int n=mat.size();
+        int m=mat[0].size()-1;
+     int i=0;
+    
+        while(i<n && m>=0)
+        {
+            if(mat[i][m]==target)
+                return true;
+            else if(mat[i][m]>target)
+                m--;
+            else
+                i++;
+        }
+       return false;
+    }
