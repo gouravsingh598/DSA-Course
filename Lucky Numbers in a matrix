@@ -1,0 +1,31 @@
+Problem Link:-https://leetcode.com/problems/lucky-numbers-in-a-matrix/
+solution :-vector<int> v;
+        int n=matrix.size();
+        int m=matrix[0].size();
+        
+        for(int i=0;i<n;i++)
+        {   
+            int val=100000;
+            int ind;      // This index store the coloumn of min element in a row.
+            for(int j=0;j<m;j++)
+            {
+                if(matrix[i][j]<val)
+                {
+                    val=matrix[i][j];
+                    ind=j;
+                }
+            }
+            int ans=val;
+           // cout<<ans<<endl;
+            
+            for(int j=0;j<n;j++)
+            {
+                ans=max(ans,matrix[j][ind]);    
+            }
+                if(ans==val)  //  if largest element in row is equal to the smallest                              //  element in a coloumn;
+                v.push_back(ans);
+        }
+        
+        
+      return v;  
+    }
