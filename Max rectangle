@@ -1,0 +1,89 @@
+Problem Link:-https://leetcode.com/problems/maximal-rectangle/submissions/
+solution:-class Solution {
+public:
+    
+     int maxrectangle(vector<int> & heights)
+  {   
+         int n=heights.size();
+           stack<int> s;
+           
+         int left[n];
+         int right[n];
+         
+        
+        for(int i=0;i<n;i++)
+        {
+            
+              while(!s.empty() && heights[s.top()]>=heights[i])
+                   s.pop();
+                 
+             
+                
+            if(s.empty())
+               left[i]=0;
+        
+    
+            else 
+            left[i]=s.top() + 1;
+          
+             s.push(i);
+        }
+        while(!s.empty())
+        s.pop();
+     
+        for(int i=n-1;i>=0;i--)
+        {
+            
+              while(!s.empty() && heights[s.top()]>=heights[i])
+                {  
+                   s.pop();
+                 
+                }
+                
+            if(s.empty())
+            {
+            right[i]=n-1;
+            }
+           
+            else 
+            {
+                right[i]=s.top() - 1;
+            }
+            
+             s.push(i);
+        }
+         int ans=0;
+       for(int i=0;i<n;i++)
+       { 
+        
+           ans=max(ans,heights[i]*(right[i]-left[i]+1));
+       }
+       return ans;
+  }
+    int maximalRectangle(vector<vector<char>>& matrix) {
+        
+      int n = matrix.size();
+        if(n==0) return 0;
+        int m = matrix[0].size();
+        
+        vector<vector<int> > mat(n, vector<int>(m));
+        
+        for(int i=0;i<n;i++)
+            for(int j=0;j<m;j++)
+                mat[i][j] = int(matrix[i][j]-'0');
+                
+
+        for(int i=1;i<n;i++)
+            for(int j=0;j<m;j++)
+                if(mat[i][j])
+                    mat[i][j] += mat[i-1][j];
+
+        int ans = 0;
+		
+	
+        for(int i=0;i<n;i++)
+            ans = max(ans, maxrectangle(mat[i]) );
+        return ans;
+        
+    }
+};
