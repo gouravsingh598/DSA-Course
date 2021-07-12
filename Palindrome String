@@ -1,0 +1,22 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/palindrome-string0817/1
+Solution:-	
+	int isPlaindrome(string s)
+	{ int j=s.size()-1;
+	  int count=0;
+	  for(int i=0;i<s.size();i++)
+	  {
+	     if(s[i]==s[j])
+	     {
+	     count++;
+	     j--;
+	     }
+	     else
+	     break;
+	  }
+	
+	  if(count==s.size())
+	    return 1;
+	  else
+	  return 0;
+	  
+	}
