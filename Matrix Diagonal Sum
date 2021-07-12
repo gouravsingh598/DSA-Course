@@ -1,0 +1,27 @@
+Problem Link:-https://leetcode.com/problems/matrix-diagonal-sum/
+Solution:-int diagonalSum(vector<vector<int>>& mat) {
+        int i=mat.size();
+        int j=mat[0].size();
+        int x=0;
+        int y=0;
+        long long int sum=0;
+        if(i==1)
+            return mat[0][0];
+        while (x<i && y<j && i>1)
+        {
+           sum+=mat[x][y];
+            x++;
+            y++;
+        }
+        x=0;
+        y=i-1;
+        while(x<i && y>=0 && i>1)
+        {
+            sum+=mat[x][y];
+            x++;
+            y--;
+        }
+        if(i%2!=0 && i>1)
+            sum=sum-mat[x/2][x/2];
+        return sum;
+    }
