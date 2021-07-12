@@ -1,0 +1,39 @@
+Problem Link:-https://practice.geeksforgeeks.org/problems/count-pairs-sum-in-matrices4332/1
+Solution:-int countPairs(vector<vector<int>> &mat1, vector<vector<int>> &mat2, int n, int x)
+	{
+	    
+	  int row1=0;
+	  int row2=n-1;
+	  int col1=0;
+	  int col2=n-1;
+	  int sum=0;
+	  int count=0;
+	  while(row1<n && row2>=0)
+	  {
+	      sum=mat1[row1][col1] + mat2[row2][col2];
+	      if(sum==x)
+	      {
+	         count++;
+	         col1++;
+	         col2--;
+	      }
+	      if(sum<x)
+	      col1++;
+	      
+	      else if(sum>x)
+	        col2--;
+	      
+	      if(col1==n)
+	      {
+	      row1++;
+	      col1=0;
+	      }
+	       if(col2==-1)
+	      {
+	       row2--;
+	       col2=n-1;
+	      }
+	      
+	  }
+	  return count;
+	}
