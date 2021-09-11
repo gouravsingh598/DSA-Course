@@ -1,0 +1,28 @@
+ 
+ 
+ int maxOccured(int L[], int R[], int n, int maxx){
+    
+        int arr[maxx+2]={ 0 };
+        for(int i=0;i<n;i++)
+        {
+            arr[L[i]]+=1;
+            arr[R[i]+1]-=1;
+        }
+        int sum=0;
+        int prev=0;
+        int ans;
+        
+        for(int i=0;i<maxx;i++)
+        cout<<arr[i]<<" ";
+        
+        for(int i=0;i<maxx;i++)
+        {   
+            sum+=arr[i];
+            if(sum>prev)
+            {
+            ans=i;
+            prev=sum;
+            }
+        }
+      return ans;  
+    }
